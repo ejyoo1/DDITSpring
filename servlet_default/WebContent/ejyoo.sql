@@ -1,21 +1,31 @@
 CREATE TABLE MEMBER(
-    USER_ID VARCHAR2(10)
+	USER_NO NUMBER(10)
+    ,USER_ID VARCHAR2(10)
     ,USER_PW VARCHAR2(10)
     ,USER_PHONE VARCHAR2(10)
     ,USER_EMAIL VARCHAR2(10)
 );
 
--- IDÃ£±â
+CREATE SEQUENCE TB_MEMBER_SEQ_USER_NO
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0
+MAXVALUE 1000000;
+
+SELECT TB_MEMBER_SEQ_USER_NO.NEXTVAL FROM DUAL;
+SELECT TB_MEMBER_SEQ_USER_NO.CURRVAL FROM DUAL;
+
+-- IDÃ£ï¿½ï¿½
 SELECT count(*)
 FROM MEMBER 
 WHERE USER_ID = 'ejyoo';
 
--- ID¿¡ ÇØ´çÇÏ´Â pw È®ÀÎ ÀÏÄ¡ÇÏ´ÂÁö È®ÀÎ
+-- IDï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ pw È®ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 SELECT count(*)
 FROM MEMBER 
 WHERE USER_ID = 'ejyoo' AND USER_PW = 'dmswl123';
 
--- ·Î±×ÀÎ ¸ñ·Ï °ª ¹ÝÈ¯
+-- ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¯
 SELECT 
     USER_ID
     ,USER_PW

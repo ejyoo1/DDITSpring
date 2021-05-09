@@ -12,70 +12,59 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import ejyoo.exception.NotEnoughDataException;
 import ejyoo.service.IMemberSystemService;
 import ejyoo.service.MemberSystemServiceImpl;
 import ejyoo.vo.MemberDTO;
 
-@WebServlet("/insertMember")
-public class MemberSystemInsertMemberServlet extends HttpServlet {
+@WebServlet("/deleteMember")
+public class MemberSystemDeleteMemberServlet extends HttpServlet {
 	private static final Logger EXCEPTION_LOGGER = Logger.getLogger(MemberSystemInsertMemberServlet.class);
-	IMemberSystemService mmssi = MemberSystemServiceImpl.getInstance();
-	
+	IMemberSystemService mssi = MemberSystemServiceImpl.getInstance();   
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		
-		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/insertMember.jsp");
-		disp.forward(request, response);
+		doPost(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		System.out.println("post");
+		
 		String script = "";
 		try {
-			String userId = request.getParameter("userId");
-			System.out.println(userId);
-			String userPw = request.getParameter("userPw");
-			String userPhone = request.getParameter("userPhone");
-			String userEmail = request.getParameter("userEmail");
+			String userNo = request.getParameter("userNo");
 			
-			if(userId == "" || userPw == "" || userPhone == "" || userEmail == "") {
+			if(userNo == "") {
 				throw new NullPointerException();
-			} else if(userId == null || userPw == null || userPhone == null || userEmail == null) {
+			} else if(userNo == null) {
 				throw new NullPointerException();
 			}
 			
 			MemberDTO memberDto = new MemberDTO();
-			memberDto.setUserId(userId);
-			memberDto.setUserPw(userPw);
-			memberDto.setUserPhone(userPhone);
-			memberDto.setUserEmail(userEmail);
+			memberDto.setUserNo(userNo);
 		
-			int cnt = mmssi.insertMember(memberDto);
+			int cnt = mssi.deleteMember(memberDto);
 			if(cnt == 1) {
-				script = "alert('회원가입이 정상적으로 이루어졌습니다.');"
-						+ "location.href='main';";
+				script = "success";
 				
 				request.setAttribute("script", script);
 			}
 		} catch (SQLException e) {
-			script = "alert('문제가 발생하였습니다. 관리자에게 문의하여 주세요.');"
-					+ "history.go(-1);";
+			script = "failed";
 			
 			EXCEPTION_LOGGER.error(e.getMessage());
 			request.setAttribute("script", script);
 			
 		} catch (NullPointerException e) {
-			script = "alert('입력값을 확인하여 주세요.');"
-					+ "history.go(-1);";
+			script = "failed";
 			
 			EXCEPTION_LOGGER.error(e.getMessage());
 			request.setAttribute("script", script);
 		}
-		
-		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/insertMember.jsp");
+
+		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/memberList.jsp");
 		disp.forward(request, response);
 	}
 }

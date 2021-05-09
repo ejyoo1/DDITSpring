@@ -67,7 +67,7 @@ public class MemberSystemServiceImpl implements IMemberSystemService {
 	public int deleteMember(MemberDTO memberDto) throws SQLException {
 		int resultCnt = 0;
 		try {
-			resultCnt = mmsdi.updateMember(smc, memberDto);
+			resultCnt = mmsdi.deleteMember(smc, memberDto);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;

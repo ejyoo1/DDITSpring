@@ -29,34 +29,40 @@
 	<!-- 회원 관리 시스템 쿼리 -->
 	<select id="selectMemberList" parameterClass="ejyoo.vo.MemberDTO" resultClass="ejyoo.vo.MemberDTO">
 		SELECT 
-		    USER_ID userId
+			USER_NO userNo
+		    ,USER_ID userId
 		    ,USER_PW userPw
 		    ,USER_PHONE userPhone
 		    ,USER_EMAIL userEmail
 		FROM MEMBER
 		WHERE 1=1
-		<isNotEmpty property= "userId" prepend="AND">
+		<isNotNull property= "userNo" prepend="AND">
+			USER_NO = #userNo#
+		</isNotNull>
+		<isNotNull property= "userId" prepend="AND">
 			USER_ID = #userId#
-		</isNotEmpty>
-		<isNotEmpty property= "userPw" prepend="AND">
+		</isNotNull>
+		<isNotNull property= "userPw" prepend="AND">
 			USER_PW = #userPw#
-		</isNotEmpty>
-		<isNotEmpty property= "userPhone" prepend="AND">
+		</isNotNull>
+		<isNotNull property= "userPhone" prepend="AND">
 			USER_PHONE = #userPhone#
-		</isNotEmpty>
-		<isNotEmpty property= "userEmail" prepend="AND">
+		</isNotNull>
+		<isNotNull property= "userEmail" prepend="AND">
 			USER_EMAIL = #userEmail#
-		</isNotEmpty>
+		</isNotNull>
 	</select>
 	
 	<insert id="insertMember" parameterClass="ejyoo.vo.MemberDTO">
 		INSERT INTO MEMBER(
-		    USER_ID
+			USER_NO
+		    ,USER_ID
 		    ,USER_PW
 		    ,USER_PHONE
 		    ,USER_EMAIL
 		)VALUES(
-		    #userId#
+			TB_MEMBER_SEQ_USER_NO.nextval
+		    ,#userId#
 		    ,#userPw#
 		    ,#userPhone#
 		    ,#userEmail#
@@ -64,15 +70,17 @@
 	</insert>
 	
 	<update id="updateMember" parameterClass="ejyoo.vo.MemberDTO">
-		UPDATE MEMBER SET 
-		    USER_PHONE = #userPhone#
+		UPDATE MEMBER SET
+			USER_ID = #userId#
+		    ,USER_PW = #userPw#
+		    ,USER_PHONE = #userPhone#
 		    ,USER_EMAIL = #userEmail#
-		WHERE USER_ID = #userId#
+		WHERE USER_NO = #userNo#
 	</update>
 	
 	<delete id="deleteMember" parameterClass="ejyoo.vo.MemberDTO">
 		DELETE FROM MEMBER 
-		WHERE USER_ID = #userId#
+		WHERE USER_NO = #userNo#
 	</delete>
 </sqlMap>			
 

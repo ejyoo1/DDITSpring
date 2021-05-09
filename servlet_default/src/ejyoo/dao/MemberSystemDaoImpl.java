@@ -22,7 +22,7 @@ public class MemberSystemDaoImpl implements IMemberSystemDao{
 	@Override
 	public List<MemberDTO> selectMemberList(SqlMapClient smc, MemberDTO memberDto) throws SQLException {
 		try {
-			List<MemberDTO> memberList = smc.queryForList("member.selectMemberList");
+			List<MemberDTO> memberList = smc.queryForList("member.selectMemberList", memberDto);
 			return memberList;
 		} catch (SQLException e) {
 			e.printStackTrace();
