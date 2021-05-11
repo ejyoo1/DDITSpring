@@ -18,10 +18,14 @@
 		<%
 	}
 %>
+<style>
+	th, td{
+		text-align: center;
+	}
+</style>
 </head>
 <body>
-<h1>메인화면</h1>
-<a type='button' href='memberList'>로그인</a>
+<h1>회원관리 시스템</h1>
 <a type='button' href='insertMember'>회원가입</a>
 <a type='button' href='memberList'>회원목록</a>
 </body>

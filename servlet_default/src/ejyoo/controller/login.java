@@ -14,7 +14,7 @@ import com.servlet.vo.MemberVO;
 import ejyoo.service.IMemberService;
 import ejyoo.service.MemberServiceImpl;
 
-@WebServlet("/login")
+@WebServlet("/logintewr")
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

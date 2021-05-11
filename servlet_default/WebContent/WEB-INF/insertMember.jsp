@@ -30,11 +30,27 @@
 <body>
 	<h1>회원 등록</h1>
 	<form id="fm" action="insertMember" method="post">
-		아이디 : <input type="text" id="userId" name="userId" /><br/>
-		비밀번호 : <input type="text" id="userPw" name="userPw" /><br/>
-		휴대전화 : <input type="text" id="userPhone" name="userPhone" /><br/>
-		이메일 : <input type="text" id="userEmail" name="userEmail" /><br/>
-		<a type="button" onclick="validation('insertMember')">가입</a>
+		<table border="1">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" id="userId" name="userId" /></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="text" id="userPw" name="userPw" /></td>
+			</tr>
+			<tr>
+				<td>휴대전화</td>
+				<td><input type="text" id="userPhone" name="userPhone" /></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><input type="text" id="userEmail" name="userEmail" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><a type="button" onclick="validation('insertMember')">가입</a></td>
+			</tr>
+		</table>
 	</form>
 </body>
 

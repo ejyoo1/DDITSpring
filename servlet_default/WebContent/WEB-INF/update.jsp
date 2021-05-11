@@ -21,6 +21,11 @@
 	}
 %>
 <script src="<%= request.getContextPath() %>/js/memberSystemUtil.js"></script>
+<style>
+	th, td{
+		text-align: center;
+	}
+</style>
 </head>
 <body>
 <h1>수정페이지</h1>
@@ -29,7 +34,7 @@
 		<tbody>
 			<tr>
 				<td>#</td>
-				<td><input type="text" id="userNo" name="userNo" value="<%= memberList.get(0).getUserNo()%>"></td>
+				<td><input type="text" id="userNo" name="userNo" value="<%= memberList.get(0).getUserNo()%>" disabled></td>
 			</tr>
 			<tr>
 				<td>아이디 : </td>

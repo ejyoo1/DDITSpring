@@ -115,22 +115,25 @@ public class MemberSystemUpdateMemberServlet extends HttpServlet {
 			
 			EXCEPTION_LOGGER.error(e.getMessage());
 			request.setAttribute("script", script);
+			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/update.jsp");
+			disp.forward(request, response);
 		} catch (SQLException e) {
 			script = "alert('문제가 발생하였습니다. 관리자에게 문의하여 주세요.');"
 					+ "history.go(-1);";
 			
 			EXCEPTION_LOGGER.error(e.getMessage());
 			request.setAttribute("script", script);
+			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/update.jsp");
+			disp.forward(request, response);
 		} catch (NotEnoughDataException e) {
 			script = "alert('문제가 발생하였습니다. 관리자에게 문의하여 주세요.');"
 					+ "history.go(-1);";
 			
 			EXCEPTION_LOGGER.error(e.getMessage());
 			request.setAttribute("script", script);
+			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/update.jsp");
+			disp.forward(request, response);
 		}
-		
-		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/update.jsp");
-		disp.forward(request, response);
 	}
 
 }

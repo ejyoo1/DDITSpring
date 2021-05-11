@@ -29,10 +29,8 @@ public class MemberSystemDeleteMemberServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
-		System.out.println("post");
-		
 		String script = "";
+		
 		try {
 			String userNo = request.getParameter("userNo");
 			
@@ -47,24 +45,33 @@ public class MemberSystemDeleteMemberServlet extends HttpServlet {
 		
 			int cnt = mssi.deleteMember(memberDto);
 			if(cnt == 1) {
-				script = "success";
+				script = "alert('삭제되었습니다.');"
+						+ "location.href='memberList';";
 				
 				request.setAttribute("script", script);
+				RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/memberList.jsp");
+				
+				disp.forward(request, response);
 			}
 		} catch (SQLException e) {
-			script = "failed";
-			
+			script = "alert('문제가 발생하였습니다. 관리자에게 문의하여 주세요.');"
+					+ "history.go(-1);";
 			EXCEPTION_LOGGER.error(e.getMessage());
+			
 			request.setAttribute("script", script);
+			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/update.jsp");
+			
+			disp.forward(request, response);
 			
 		} catch (NullPointerException e) {
-			script = "failed";
-			
+			script = "alert('문제가 발생하였습니다. 관리자에게 문의하여 주세요.');"
+					+ "history.go(-1);";
 			EXCEPTION_LOGGER.error(e.getMessage());
+			
 			request.setAttribute("script", script);
+			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/update.jsp");
+			
+			disp.forward(request, response);
 		}
-
-		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/memberList.jsp");
-		disp.forward(request, response);
 	}
 }

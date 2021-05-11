@@ -62,7 +62,7 @@
 				<td><%= memberList.get(i).getUserEmail() %></td>
 				<td>
 					<a type='button' href='updateMember?userNo=<%= memberList.get(i).getUserNo() %>'>수정</a>
-					<a type='button' onclick="confirmForm('delete','<%= request.getContextPath()%>/deleteMember','<%= memberList.get(i).getUserNo() %>')">삭제</a>
+					<a type='button' href='deleteMember?userNo=<%= memberList.get(i).getUserNo() %>'>삭제</a>
 				</td>
 			</tr>
 			<%
@@ -78,7 +78,7 @@
 		<tr>
 			<td colspan='6'>
 				<a type='button' href='insertMember'>회원등록</a>
-				<a type="button" onclick="javascript:location.href='javascript:history.go(-1);'">이전으로</a>
+<!-- 				<a type="button" onclick="javascript:location.href='javascript:history.go(-1);'">이전으로</a> -->
 			</td>
 		</tr>
 	</tbody>

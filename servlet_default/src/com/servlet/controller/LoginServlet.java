@@ -16,16 +16,21 @@ import com.servlet.service.MemberServiceImpl;
 import com.servlet.view.HTMLView;
 import com.servlet.vo.MemberVO;
 
-@WebServlet("/LoginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	
 	private MemberService memberService = new MemberServiceImpl();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HTMLView.loginView(response);
+		String view = "/WEB-INF/views/login.jsp";
+		
+		request.getRequestDispatcher(view).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 화면에 대한 URL을 먼저 정해야 함. (잘 되었을 때 기준으로)
+		String view = "/WEB-INF/views/login_success.jsp";
+		
 		// 입력
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
@@ -51,7 +56,9 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		// 출력 
-		HTMLView.html(response, script);
+		//HTMLView.html(response, script);
+		request.setAttribute("script", script);
+		request.getRequestDispatcher(view).forward(request, response);
 	}
 
 }
