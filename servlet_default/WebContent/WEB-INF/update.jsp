@@ -1,9 +1,9 @@
 <%@page import="java.util.List"%>
-<%@page import="ejyoo.vo.MemberDTO"%>
+<%@page import="ejyoo.dto.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	List<MemberDTO> memberList = (List<MemberDTO>) request.getAttribute("memberList");
+	List<MemberVO> memberList = (List<MemberVO>) request.getAttribute("memberList");
 	String script = (String) request.getAttribute("script");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
