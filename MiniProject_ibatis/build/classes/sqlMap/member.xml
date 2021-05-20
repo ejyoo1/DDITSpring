@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="member"> 
+	<!-- 회원 관리 시스템 쿼리 -->
+	<select id="selectMemberList" parameterClass="ejyoo.vo.MemberDTO" resultClass="ejyoo.vo.MemberDTO">
+		SELECT 
+			USER_NO userNo
+		    ,USER_ID userId
+		    ,USER_PW userPw
+		    ,USER_PHONE userPhone
+		    ,USER_EMAIL userEmail
+		FROM MEMBER
+		WHERE 1=1
+		<isNotEmpty  property= "userNo" prepend="AND">
+			USER_NO = #userNo#
+		</isNotEmpty >
+		<isNotEmpty  property= "userId" prepend="AND">
+			USER_ID = #userId#
+		</isNotEmpty >
+		<isNotEmpty  property= "userPw" prepend="AND">
+			USER_PW = #userPw#
+		</isNotEmpty >
+		<isNotEmpty  property= "userPhone" prepend="AND">
+			USER_PHONE = #userPhone#
+		</isNotEmpty >
+		<isNotEmpty  property= "userEmail" prepend="AND">
+			USER_EMAIL = #userEmail#
+		</isNotEmpty >
+	</select>
+	
+	<select id="selectMember" parameterClass="String" resultClass="ejyoo.vo.MemberDTO">
+		SELECT 
+			USER_NO userNo
+		    ,USER_ID userId
+		    ,USER_PW userPw
+		    ,USER_PHONE userPhone
+		    ,USER_EMAIL userEmail
+		FROM MEMBER WHERE USER_ID = #userId#
+	</select>
+	
+	<insert id="insertMember" parameterClass="ejyoo.vo.MemberDTO">
+		INSERT INTO MEMBER(
+			USER_NO
+		    ,USER_ID
+		    ,USER_PW
+		    ,USER_PHONE
+		    ,USER_EMAIL
+		)VALUES(
+			TB_MEMBER_SEQ_USER_NO.nextval
+		    ,#userId#
+		    ,#userPw#
+		    ,#userPhone#
+		    ,#userEmail#
+		)
+	</insert>
+	
+	<update id="updateMember" parameterClass="ejyoo.vo.MemberDTO">
+		UPDATE MEMBER SET
+			USER_ID = #userId#
+		    ,USER_PW = #userPw#
+		    ,USER_PHONE = #userPhone#
+		    ,USER_EMAIL = #userEmail#
+		WHERE USER_NO = #userNo#
+	</update>
+	
+	<delete id="deleteMember" parameterClass="String">
+		DELETE FROM MEMBER 
+		WHERE USER_ID = #userId#
+	</delete>
+</sqlMap>			
+
+
+
+
+
