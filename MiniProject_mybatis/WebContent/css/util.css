@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+th, td{
+	text-align: center;
+}
+
+.textCenter {
+	text-align: center;
+}
+.textleft {
+	text-align: left;
+}
+.textRight{
+	text-align: right;
+}
+.btnArea {
+	margin-right: 10px;
+}
+
+input {
+	width:100%
+}

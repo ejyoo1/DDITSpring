@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member-Mapper">
+
+	<select id="selectMemberList" parameterType="member" resultType="member">
+		SELECT 
+			USER_NO userNo
+		    ,USER_ID userId
+		    ,USER_PW userPw
+		    ,USER_PHONE userPhone
+		    ,USER_EMAIL userEmail
+		FROM MEMBER
+		WHERE 1=1
+		<if test='userNo != null and userNo != ""'>
+			AND USER_NO = #{userNo}
+		</if>
+		<if test='userId != null and userId != ""'>
+			AND USER_ID = #{userId}
+		</if>
+		<if test='userPw != null and userPw != ""'>
+			AND USER_PW = #{userPw}
+		</if>
+		<if test='userPw != null and userPw != ""'>
+			AND USER_PHONE = #{userPhone}
+		</if>
+		<if test='userEmail != null and userEmail != ""'>
+			AND USER_EMAIL = #{userEmail}
+		</if>
+	</select>
+	
+	<select id="selectMemberByInfo" parameterType="member" resultType="member">
+		SELECT 
+			USER_NO userNo
+		    ,USER_ID userId
+		    ,USER_PW userPw
+		    ,USER_PHONE userPhone
+		    ,USER_EMAIL userEmail
+		FROM MEMBER 
+		WHERE 1=1 
+		<if test='userNo != null and userNo != ""'>
+			AND USER_NO = #{userNo}
+		</if>
+		<if test='userId != null and userId != ""'>
+			AND USER_ID = #{userId}
+		</if>
+		<if test='userPw != null and userPw != ""'>
+			AND USER_PW = #{userPw}
+		</if>
+		<if test='userPw != null and userPw != ""'>
+			AND USER_PHONE = #{userPhone}
+		</if>
+		<if test='userEmail != null and userEmail != ""'>
+			AND USER_EMAIL = #{userEmail}
+		</if>
+	</select>
+	
+	<select id="selectMemberById" parameterType="str" resultType="member">
+		SELECT 
+			USER_NO userNo
+		    ,USER_ID userId
+		    ,USER_PW userPw
+		    ,USER_PHONE userPhone
+		    ,USER_EMAIL userEmail
+		FROM MEMBER 
+		WHERE USER_ID = #{userId}
+	</select>
+	
+	<insert id="insertMemberByInfo" parameterType="member">
+		INSERT INTO MEMBER(
+			USER_NO
+		  ,USER_ID
+		  ,USER_PW
+		  ,USER_PHONE
+		  ,USER_EMAIL
+		)VALUES(
+			TB_MEMBER_SEQ_USER_NO.nextval
+		  ,#{userId}
+		  ,#{userPw}
+		  ,#{userPhone}
+		  ,#{userEmail}
+		)
+	</insert>
+	
+	<update id="updateMemberByInfo" parameterType="member">
+		UPDATE MEMBER SET
+			USER_ID = #{userId}
+		  ,USER_PW = #{userPw}
+		  ,USER_PHONE = #{userPhone}
+		  ,USER_EMAIL = #{userEmail}
+		WHERE USER_NO = #{userNo}
+	</update>
+	
+	<delete id="deleteMemberById" parameterType="str">
+		DELETE 
+		FROM MEMBER 
+		WHERE USER_ID = #{userId}
+	</delete>
+</mapper>
