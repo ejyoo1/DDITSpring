@@ -3,8 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Member-Mapper">
+	
+	<select id="selectMemberList" resultType="member">
+		SELECT 
+			USER_NO userNo
+		    ,USER_ID userId
+		    ,USER_PW userPw
+		    ,USER_PHONE userPhone
+		    ,USER_EMAIL userEmail
+		FROM MEMBER
+	</select>
 
-	<select id="selectMemberList" parameterType="member" resultType="member">
+
+	<select id="selectMemberListByInfo" parameterType="member" resultType="member">
 		SELECT 
 			USER_NO userNo
 		    ,USER_ID userId
@@ -85,11 +96,10 @@
 	
 	<update id="updateMemberByInfo" parameterType="member">
 		UPDATE MEMBER SET
-			USER_ID = #{userId}
-		  ,USER_PW = #{userPw}
+		  USER_PW = #{userPw}
 		  ,USER_PHONE = #{userPhone}
 		  ,USER_EMAIL = #{userEmail}
-		WHERE USER_NO = #{userNo}
+		WHERE USER_ID = #{userId}
 	</update>
 	
 	<delete id="deleteMemberById" parameterType="str">

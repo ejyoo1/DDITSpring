@@ -3,13 +3,13 @@
 
 <beans>
 	<!-- dataSource -->
-	<bean id="sqlSessionFactory" class="com.jquery.mybatis.OracleMyBatisSqlSessionFactory" />
+	<bean id="sqlSessionFactory" class="kr.or.ddit.mybatis.OracleMyBatisSqlSessionFactory" />
 
 	<!-- Repository Layer -->
-	<bean id="menuDAO"  class="com.jquery.dao.MenuDAOImpl" />
+	<bean id="menuDAO"  class="kr.or.ddit.dao.MenuDAOImpl" />
 	
 	<!-- Service layer -->
-	<bean id="menuService" class="com.jquery.service.MenuServiceImpl">
+	<bean id="menuService" class="kr.or.ddit.service.MenuServiceImpl">
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
 		<property name="menuDAO" ref-value="menuDAO" />
 	</bean>

@@ -7,7 +7,8 @@
 	<typeAliases>
 		<typeAlias type="java.lang.String" alias="str" />
 		<typeAlias type="java.lang.Integer" alias="int" />
-		<typeAlias type="ejyoo.dto.MemberVO" alias="member" />		
+		<typeAlias type="ejyoo.dto.MemberVO" alias="member" />
+		<typeAlias type="ejyoo.dto.NoticeVO" alias="notice" />
 	</typeAliases>
 	
 	<environments default="development">
@@ -27,5 +28,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="kr/or/ddit/mybatis/Member-Mapper.xml" />
+		<mapper resource="kr/or/ddit/mybatis/Notice-Mapper.xml" />
 	</mappers>
 </configuration>

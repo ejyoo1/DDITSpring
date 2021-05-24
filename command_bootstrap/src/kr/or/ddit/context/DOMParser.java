@@ -26,37 +26,35 @@ public class DOMParser {
 		Document document = documentBuilder.parse(new File("src/application-context.xml"));
 		
 		// root 구하기
-		document.getDocumentElement().normalize();
-//		System.out.println("Root element :" + document.getDocumentElement().getNodeName());
 		NodeList nList = document.getElementsByTagName("bean");
-//		System.out.println("----------------------------");
-//		System.out.println(nList.getLength());
-//		System.out.println("----------------------------");
+		System.out.println("----------------------------");
+		System.out.println(nList.getLength());
+		System.out.println("----------------------------");
 		
 		for(int temp = 0 ; temp < nList.getLength() ; temp++) {
 			Node nNode = nList.item(temp);
 //			System.out.println("\nCurrent Element : " + nNode.getNodeName());
 			if(nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
-//				System.out.println("Bean NodeName : " + eElement);
-//				System.out.println("Bean id : " + eElement.getAttribute("id"));
-//				System.out.println("Bean class : " + eElement.getAttribute("class"));
+				System.out.println("Bean NodeName : " + eElement);
+				System.out.println("Bean id : " + eElement.getAttribute("id"));
+				System.out.println("Bean class : " + eElement.getAttribute("class"));
 				String id = eElement.getAttribute("id");
 				String klass = eElement.getAttribute("class");
 				xmlParserMap.put(id+"Bean", klass);
 				
 				NodeList properties = eElement.getElementsByTagName("property");
-//				System.out.println("----------------------------");
-//				System.out.println(properties.getLength());
-//				System.out.println("----------------------------");
+				System.out.println("----------------------------");
+				System.out.println(properties.getLength());
+				System.out.println("----------------------------");
 				if(properties.getLength() > 0) {
 					for(int count = 0 ; count < properties.getLength() ; count++) {
 						Node pNode = properties.item(count);
-//					System.out.println("\nCurrent Child Element : " + pNode.getNodeName());
+					System.out.println("\nCurrent Child Element : " + pNode.getNodeName());
 						if(pNode.getNodeType() == Node.ELEMENT_NODE) {
 							Element pElement = (Element) pNode;
-//							System.out.println("property name : " + pElement.getAttribute("name"));
-//							System.out.println("property ref-value : " + pElement.getAttribute("ref-value"));
+							System.out.println("property name : " + pElement.getAttribute("name"));
+							System.out.println("property ref-value : " + pElement.getAttribute("ref-value"));
 							String name = pElement.getAttribute("name");
 							String ref_value = pElement.getAttribute("ref-value");
 							xmlParserMap.put(name+"Property", ref_value);

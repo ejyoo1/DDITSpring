@@ -13,12 +13,12 @@ import kr.or.ddit.mybatis.OracleMyBatisSqlSessionFactory;
 
 public class MenuServiceImpl implements MenuService {
 	
-	private MenuDAO menuDAO = new MenuDAOImpl();
+	private MenuDAO menuDAO;// = new MenuDAOImpl(); 의존 주입
 	public void setMenuDAO(MenuDAO menuDAO) {
 		this.menuDAO = menuDAO;
 	}
 
-	private SqlSessionFactory sqlSessionFactory = new OracleMyBatisSqlSessionFactory();
+	private SqlSessionFactory sqlSessionFactory;// = new OracleMyBatisSqlSessionFactory(); 의존 주입
 	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
 		this.sqlSessionFactory = sqlSessionFactory;
 	}

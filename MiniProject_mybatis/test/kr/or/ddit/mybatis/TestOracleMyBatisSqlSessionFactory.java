@@ -2,6 +2,7 @@ package kr.or.ddit.mybatis;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +24,7 @@ public class TestOracleMyBatisSqlSessionFactory {
 		Assert.assertNotNull(session.getConnection());
 	}
 	
+	@After
 	public void closeSession() {
 		session.close();
 	}
