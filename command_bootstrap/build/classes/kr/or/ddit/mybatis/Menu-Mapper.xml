@@ -14,7 +14,7 @@
 	<select id="selectSubMenu" resultType="menu">
 		SELECT *
 		FROM MENU
-		WHERE UPCODE = #{MCODE} AND ISNAV = 1
+		WHERE UPCODE = #{MCODE}
 	</select>	
 	
 	<select id="selectMenuByMcode" resultType="menu">
