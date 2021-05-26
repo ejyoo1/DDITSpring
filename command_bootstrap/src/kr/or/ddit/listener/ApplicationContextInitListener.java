@@ -29,7 +29,7 @@ public class ApplicationContextInitListener implements ServletContextListener {
     	beanConfigXml = ctx.getRealPath("/")
     			+ beanConfigXml.replace("classpath:", "WEB-INF/classes/").replace("/", File.separator);
     	
-    	//System.out.println(beanConfigXml);
+    	System.out.println(beanConfigXml);
     	
     	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); // 팩토리 객체를 생성
     	

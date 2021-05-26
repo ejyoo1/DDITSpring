@@ -1,4 +1,4 @@
-package ejyoo.servlet.util;
+package ejyoo.mybatis;
 
 import java.io.Reader;
 import java.sql.Connection;

@@ -31,8 +31,8 @@
     <ul class="navbar-nav main-menu-list">
     	<c:forEach items="${menuList}" var="menu">
     		<li class="nav-item d-none d-sm-inline-block">
-	    		<a href="${menu.murl}" class="nav-link"><!-- get Method 호출하는 것. -->
-		    		<i class="nav-icon fas fa-file"></i>
+	    		<a href="javascript:subMenu('${menu.mcode}');goPage('${menu.murl}','${menu.mcode}');" class="nav-link"><!-- get Method 호출하는 것. -->
+		    		<i class="${menu.micon}"></i>
 		    		${menu.mname}
 	    		</a>
 	    	</li>
@@ -217,19 +217,63 @@
 
 <!-- handlebars -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-
-<!-- common -->
+<script type="text/x-handlebars-template"  id="subMenu-list-template" >
+{{#each .}}
+	<li class="nav-item subMenu" >
+      	<a href="javascript:goPage('{{murl}}','{{mcode}}');initPageParam();" class="nav-link">
+          <i class="{{micon}}"></i>
+             <p>{{mname}}</p>
+        </a>
+	</li>
+{{/each}}
+</script>
 
 <!-- page script -->
 <script>
-	$('ul.navbar-nav > li.nav-item > a').click(function(event){
-		// alert("click a");
-		// event.originalEvent.currentTarget : 누른 앵커태그
+function subMenu(mcode){
+	if(mcode != "M000000"){
+		$.getJSON("/subMenu.do?mCode="+mcode,function(data){
+			//console.log(data);
+			printData(data,$('.subMenuList'),$('#subMenu-list-template'),'.subMenu');//CRUD 육하원칙
+		});
+	} else {
+		$('.subMenuList').html("");
+	}
+}
+
+//handlerbars printElement(args : data Array, appent target, handlebar template, remove class)
+function printData(dataArr,target,templateObject,removeClass){
+	var template = Handlebars.compile(templateObject.html());
+	
+	var html = template(dataArr);
+	
+	$(removeClass).remove();
+	target.append(html);
+}
+
+function goPage(url,mCode){
+	//HTML5 지원브라우저에서 사용 가능
+	if (typeof(history.pushState) == 'function'){
+		// 현재 주소를 가져온다.
+		var renewURL = location.href;
+		// 현재 주소 중 .do 뒤 부분이 있다면 날려버린다.
+		renewURL = renewURL.substring(0, renewURL.indexOf(".htm")+4);
 		
-		$('iframe[name="ifr"]').attr('src',$(this).attr('href'));
+		if(mCode != 'M000000'){
+			renewURL += "?mCode="+mCode;
+		}
+		// 페이지를 리로드 하지 않고 페이지 주소만 변경할 때 사용
+		history.pushState(mCode, null, renewURL);
 		
-		return false;
-	});
+	} else {
+		location.hash = "#"+mCode;
+	}
+	
+	$('iframe[name="ifr"]').attr("src",url);
+}
+
+goPage('${menu.murl}','${menu.mcode}');
+subMenu('${menu.mcode}'.substring(0,3)+"0000");
 </script>
  </body>
  </html>

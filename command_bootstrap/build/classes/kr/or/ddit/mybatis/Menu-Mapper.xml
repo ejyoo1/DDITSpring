@@ -5,20 +5,41 @@
 <mapper namespace="Menu-Mapper">
 
 	<select id="selectMainMenu" resultType="menu">
-		SELECT * 
+		SELECT MCODE
+	    , MNAME
+	    , MURL
+	    , MICON
+	    , JTEXT
+	    , UPCODE
+	    , MLEVEL
+	    , ISNAV
 		FROM MENU 
-		WHERE MCODE LIKE '%'||'0000'||'%'
+		WHERE MCODE LIKE '%'||'0000'||'%' 
 		ORDER BY MCODE ASC
 	</select>
 	
 	<select id="selectSubMenu" resultType="menu">
-		SELECT *
+		SELECT MCODE
+	    , MNAME
+	    , MURL
+	    , MICON
+	    , JTEXT
+	    , UPCODE
+	    , MLEVEL
+	    , ISNAV
 		FROM MENU
-		WHERE UPCODE = #{MCODE}
+		WHERE UPCODE = #{MCODE} AND ISNAV = 1
 	</select>	
 	
 	<select id="selectMenuByMcode" resultType="menu">
-		SELECT * 
+		SELECT MCODE
+	    , MNAME
+	    , MURL
+	    , MICON
+	    , JTEXT
+	    , UPCODE
+	    , MLEVEL
+	    , ISNAV 
 		FROM MENU
 		WHERE MCODE = #{MCODE}
 	</select>

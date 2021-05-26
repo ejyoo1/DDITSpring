@@ -5,12 +5,17 @@
 <mapper namespace="Member-Mapper">
 	
 	<select id="selectMemberList" resultType="member">
-		SELECT 
-			USER_NO userNo
-		    ,USER_ID userId
-		    ,USER_PW userPw
-		    ,USER_PHONE userPhone
-		    ,USER_EMAIL userEmail
+		SELECT ID id
+		    ,PWD pwd
+		    ,EMAIL email
+		    ,PICTURE picture
+		    ,ENABLED enabled
+		    ,REGDATE regdate
+		    ,PHONE phone
+		    ,NAME name
+		    ,REGISTER register
+		    ,ADDRESS address
+		    ,AUTHORITY authority
 		FROM MEMBER
 	</select>
 

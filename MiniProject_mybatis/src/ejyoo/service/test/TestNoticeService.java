@@ -1,4 +1,4 @@
-package ejyoo.service;
+package ejyoo.service.test;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import ejyoo.dto.NoticeVO;
+import ejyoo.service.NoticeServiceImpl;
+import ejyoo.service.mockdao.MockNoticeDAO;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestNoticeService {

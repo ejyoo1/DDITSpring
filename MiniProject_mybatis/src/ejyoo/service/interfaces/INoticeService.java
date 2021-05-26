@@ -1,4 +1,4 @@
-package ejyoo.service;
+package ejyoo.service.interfaces;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -7,8 +7,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import ejyoo.servlet.util.OracleMyBatisSqlSessionFactory;
+import ejyoo.mybatis.OracleMyBatisSqlSessionFactory;
 
+// pass
 public class TestOracleMyBatisSqlSessionFactory {
 	private SqlSessionFactory factory = new OracleMyBatisSqlSessionFactory();
 	

@@ -1,4 +1,4 @@
-package ejyoo.dao;
+package ejyoo.dao.test;
 
 import java.util.List;
 
@@ -10,8 +10,10 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import ejyoo.dao.MemberDAOImpl;
+import ejyoo.dao.interfaces.IMemberDAO;
 import ejyoo.dto.MemberVO;
-import ejyoo.servlet.util.OracleMyBatisSqlSessionFactory;
+import ejyoo.mybatis.OracleMyBatisSqlSessionFactory;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestMemberDAOImpl {

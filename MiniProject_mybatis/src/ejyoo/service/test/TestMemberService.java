@@ -1,4 +1,4 @@
-package ejyoo.service;
+package ejyoo.service.test;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import ejyoo.dto.MemberVO;
+import ejyoo.service.MemberServiceImpl;
+import ejyoo.service.mockdao.MockMemberDAO;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestMemberService {

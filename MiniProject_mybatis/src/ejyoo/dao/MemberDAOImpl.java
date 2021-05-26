@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import ejyoo.dao.interfaces.IMemberDAO;
 import ejyoo.dto.MemberVO;
 
 public class MemberDAOImpl implements IMemberDAO{

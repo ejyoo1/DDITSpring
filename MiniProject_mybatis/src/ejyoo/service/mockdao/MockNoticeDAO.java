@@ -1,4 +1,4 @@
-package ejyoo.service;
+package ejyoo.service.mockdao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import ejyoo.dao.INoticeDAO;
+import ejyoo.dao.interfaces.INoticeDAO;
 import ejyoo.dto.NoticeVO;
 
 public class MockNoticeDAO implements INoticeDAO{

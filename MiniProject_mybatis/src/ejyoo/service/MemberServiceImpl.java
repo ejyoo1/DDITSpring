@@ -6,10 +6,11 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import ejyoo.dao.IMemberDAO;
 import ejyoo.dao.MemberDAOImpl;
+import ejyoo.dao.interfaces.IMemberDAO;
 import ejyoo.dto.MemberVO;
-import ejyoo.servlet.util.OracleMyBatisSqlSessionFactory;
+import ejyoo.mybatis.OracleMyBatisSqlSessionFactory;
+import ejyoo.service.interfaces.IMemberService;
 
 public class MemberServiceImpl implements IMemberService {
 

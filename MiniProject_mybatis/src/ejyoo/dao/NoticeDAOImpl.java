@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import ejyoo.dao.interfaces.INoticeDAO;
 import ejyoo.dto.NoticeVO;
 
 public class NoticeDAOImpl implements INoticeDAO{

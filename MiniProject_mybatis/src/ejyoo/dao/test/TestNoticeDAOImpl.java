@@ -1,4 +1,4 @@
-package ejyoo.dao;
+package ejyoo.dao.test;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import ejyoo.dto.NoticeVO;
-import ejyoo.servlet.util.OracleMyBatisSqlSessionFactory;
+import ejyoo.mybatis.OracleMyBatisSqlSessionFactory;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestNoticeDAOImpl {
