@@ -6,10 +6,22 @@
 	
 	<!-- Repository Layer -->
 	<bean id="menuDAO" class="ejyoo.dao.MenuDAOImpl" />
+	<bean id="memberDAO" class="ejyoo.dao.MemberDAOImpl" />
+	<bean id="noticeDAO" class="ejyoo.dao.NoticeDAOImpl" />
 	
 	<!-- Service Layer -->
 	<bean id="menuService" class="ejyoo.service.MenuServiceImpl">
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
 		<property name="menuDAO" ref-value="menuDAO" />
+	</bean>
+	
+	<bean id="memberService" class="ejyoo.service.MemberServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="memberDAO" ref-value="memberDAO" />
+	</bean>
+	
+	<bean id="noticeService" class="ejyoo.service.NoticeServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="noticeDAO" ref-value="noticeDAO" />
 	</bean>
 </beans>

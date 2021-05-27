@@ -6,16 +6,15 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import ejyoo.dao.MemberDAO;
 import ejyoo.dao.MemberDAOImpl;
-import ejyoo.dao.interfaces.IMemberDAO;
 import ejyoo.dto.MemberVO;
 import ejyoo.mybatis.OracleMyBatisSqlSessionFactory;
-import ejyoo.service.interfaces.IMemberService;
 
-public class MemberServiceImpl implements IMemberService {
+public class MemberServiceImpl implements MemberService {
 
-	private IMemberDAO memberDao = new MemberDAOImpl();
-	public void setMemberDao(IMemberDAO memberDao) {
+	private MemberDAO memberDao = new MemberDAOImpl();
+	public void setMemberDao(MemberDAO memberDao) {
 		this.memberDao = memberDao;
 	}
 	

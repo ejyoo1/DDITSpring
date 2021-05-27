@@ -7,4 +7,17 @@
   <listener>
     <listener-class>ejyoo.listener.ApplicationContextInitListener</listener-class>
   </listener>
+  <servlet>
+    <servlet-name>FrontServlet</servlet-name>
+    <servlet-class>ejyoo.controller.FrontServlet</servlet-class>
+    <init-param>
+       <param-name>handlerMapper</param-name>
+       <param-value>ejyoo.controller.HandlerMapper</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrontServlet</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
 </web-app>

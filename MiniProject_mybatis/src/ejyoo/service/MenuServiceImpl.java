@@ -6,14 +6,13 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import ejyoo.dao.interfaces.IMenuDAO;
+import ejyoo.dao.MenuDAO;
 import ejyoo.dto.MenuVO;
-import ejyoo.service.interfaces.IMenuService;
 
-public class MenuServiceImpl implements IMenuService {
+public class MenuServiceImpl implements MenuService {
 	
-	private IMenuDAO menuDAO;
-	public void setMenuDAO(IMenuDAO menuDAO) {
+	private MenuDAO menuDAO;
+	public void setMenuDAO(MenuDAO menuDAO) {
 		this.menuDAO = menuDAO;
 	}
 	

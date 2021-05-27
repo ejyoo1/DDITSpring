@@ -1,69 +1,88 @@
-package ejyoo.dao;
+package kr.or.ddit.mybatis;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import ejyoo.dao.MemberDAO;
 import ejyoo.dto.MemberVO;
 
-public class MemberDAOImpl implements MemberDAO{
-	
+public class MockMemberDAO implements MemberDAO {
+
 	@Override
 	public List<MemberVO> selectMemberList(SqlSession session) throws SQLException {
 		List<MemberVO> memberList = null;
 		
 		if(session.getConnection()==null) throw new SQLException();
-		memberList = session.selectList("Member-Mapper.selectMemberList");
+		
+		MemberVO member = new MemberVO();
+		//member.setUserId("test1");
+		
+		memberList = new ArrayList<MemberVO>();
+		memberList.add(member);
 		
 		return memberList;
 	}
-	
+
 	@Override
-	public List<MemberVO> selectMemberListByInfo(SqlSession session, MemberVO memberVO) throws SQLException {
+	public List<MemberVO> selectMemberListByInfo(SqlSession session, MemberVO memberVo) throws SQLException {
 		List<MemberVO> memberList = null;
 		
 		if(session.getConnection()==null) throw new SQLException();
-		memberList = session.selectList("Member-Mapper.selectMemberListByInfo", memberVO);
+		
+		MemberVO member = new MemberVO();
+		//member.setUserId("test1");
+		
+		memberList = new ArrayList<MemberVO>();
+		memberList.add(member);
 		
 		return memberList;
 	}
-	
+
 	@Override
-	public MemberVO selectMemberByInfo(SqlSession session, MemberVO memberVO) throws SQLException {
+	public MemberVO selectMemberByInfo(SqlSession session, MemberVO memberVo) throws SQLException {
 		MemberVO member = null;
 		
 		if(session.getConnection()==null) throw new SQLException();
-		member = session.selectOne("Member-Mapper.selectMemberByInfo", memberVO);
+		
+		member = new MemberVO();
+		//member.setUserId("test1");
 		
 		return member;
 	}
-	
+
 	@Override
 	public MemberVO selectMemberById(SqlSession session, String userId) throws SQLException {
 		MemberVO member = null;
 		
 		if(session.getConnection()==null) throw new SQLException();
-		member = session.selectOne("Member-Mapper.selectMemberById", userId);
+		
+		member = new MemberVO();
+		//member.setUserId("test1");
 		
 		return member;
 	}
 
 	@Override
-	public int insertMemberByInfo(SqlSession session, MemberVO memberVO) throws SQLException {
+	public int insertMemberByInfo(SqlSession session, MemberVO memberVo) throws SQLException {
 		int cnt = 0;
 		
 		if(session.getConnection()==null) throw new SQLException();
-		cnt = session.insert("Member-Mapper.insertMemberByInfo", memberVO);
+		
+		cnt = 1;
 		
 		return cnt;
 	}
 
 	@Override
-	public int updateMemberByInfo(SqlSession session, MemberVO memberVO) throws SQLException {
+	public int updateMemberByInfo(SqlSession session, MemberVO memberVo) throws SQLException {
 		int cnt = 0;
 		
-		cnt = session.update("Member-Mapper.updateMemberByInfo", memberVO);
+		if(session.getConnection()==null) throw new SQLException();
+		
+		cnt = 1;
 		
 		return cnt;
 	}
@@ -72,7 +91,9 @@ public class MemberDAOImpl implements MemberDAO{
 	public int deleteMemberById(SqlSession session, String userId) throws SQLException {
 		int cnt = 0;
 		
-		cnt = session.delete("Member-Mapper.deleteMemberById", userId);
+		if(session.getConnection()==null) throw new SQLException();
+		
+		cnt = 1;
 		
 		return cnt;
 	}

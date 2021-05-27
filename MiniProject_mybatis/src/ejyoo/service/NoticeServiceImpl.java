@@ -6,16 +6,15 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import ejyoo.dao.NoticeDAO;
 import ejyoo.dao.NoticeDAOImpl;
-import ejyoo.dao.interfaces.INoticeDAO;
 import ejyoo.dto.NoticeVO;
 import ejyoo.mybatis.OracleMyBatisSqlSessionFactory;
-import ejyoo.service.interfaces.INoticeService;
 
-public class NoticeServiceImpl implements INoticeService{
+public class NoticeServiceImpl implements NoticeService{
 	
-	private INoticeDAO noticeDao = new NoticeDAOImpl();
-	public void setNoticeDao(INoticeDAO noticeDao) {
+	private NoticeDAO noticeDao = new NoticeDAOImpl();
+	public void setNoticeDao(NoticeDAO noticeDao) {
 		this.noticeDao = noticeDao;
 	}
 	
